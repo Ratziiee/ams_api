@@ -2,7 +2,7 @@ let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
 let morgan = require('morgan');
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const routes = require('./API/routes/routess')
 
 
@@ -17,6 +17,6 @@ app.use(function(request, response, next) {
     next();
   }); 
 
-  app.use('/api',routes);
+  app.use('/',routes);
 
   app.listen(PORT, () => console.log('Lestining to port '+PORT))

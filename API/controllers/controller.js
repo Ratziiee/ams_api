@@ -19,4 +19,18 @@ module.exports.test = (req,res) => {
     });
 }
 
+module.exports.getAllEmployees = (req,res) => {
+    var query = `SELECT id, name, email, mobile, designation, department, emp_id, emp_type
+	FROM public.user_master`;
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        res.send(data);
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send(err);
+    });
+}
+
 
