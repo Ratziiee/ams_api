@@ -90,3 +90,29 @@ module.exports.getSingleEmployeesLogs = (req,res) => {
 }
 
 
+module.exports.postEditProfile = (req,res) => {
+
+    let id = req.body.id;
+    let name=req.body.name;
+    let email=req.body.email;
+    let mobile=req.body.mobile;
+    let designation = req.body.designation;
+    let department = req.body.department;
+    let emp_id = req.body.emp_id;
+    let employee_type = req.body.employee_type;
+
+    var query = `UPDATE public.user_master
+    SET name='${name}', email='${email}' , mobile=${mobile}, designation='${designation}',
+     department='${department}', emp_id='${emp_id}', emp_type='${employee_type}'
+	WHERE id= ${id}`;
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        res.send(data);
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send(err);
+    });
+}
+
