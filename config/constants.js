@@ -20,20 +20,6 @@ main_obj.server = {};
 main_obj.server.port = 5002;
 
 main_obj.msgs = {};
-main_obj.msgs.productName = "AeroGMS";
-main_obj.msgs.signup_success = "Your Account is successfully created";
-main_obj.msgs.signup_acc_exists = "This Account is already exists";
-main_obj.msgs.signup_mail = "Welcome to thr AeroGMS Family";
-main_obj.msgs.account_not_exists = "Invalid Account";
-main_obj.msgs.forgot_password = "Change password : click here \n https://abc.com/forgotpassword/email="
-main_obj.msgs.forgot_password_success = "Your request is successfully submited. Please check your registered mail to change the password";
-main_obj.msgs.profile_updated = "Profile is successfully updated";
-main_obj.msgs.incomplete_details = "Incomplete Details. Please try again";
-main_obj.msgs.project_creation_success = "Project is successfully created";
-main_obj.msgs.project_fetching_success = "All projects are fetched successfully";
-main_obj.msgs.project_rename_success = "Project is renamed successfully";
-main_obj.msgs.project_delete_success = "Project is deleted successfully";
-main_obj.msgs.invalid_mobile_no = "Mobile number is invalid";
 
 //--------------------UNIVERSAL ERROR MSG--------------------------------//
 
