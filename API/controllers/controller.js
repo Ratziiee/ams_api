@@ -109,6 +109,8 @@ module.exports.postEditProfile = (req,res) => {
     var query = `UPDATE public.user_master
 	SET  name='vimlaa', email='vimlaa@nhai.org', mobile=8800123488, designation='PD', department='IT', emp_id='EMP000', emp_type='Contratual'
     WHERE id=4`
+
+    console.log(req)
     console.log(query);
     debugger
     db.any(query).then((data) => {
