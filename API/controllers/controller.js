@@ -104,7 +104,12 @@ module.exports.postEditProfile = (req,res) => {
     var query = `UPDATE public.user_master
     SET name='${name}', email='${email}' , mobile=${mobile}, designation='${designation}',
      department='${department}', emp_id='${emp_id}', emp_type='${employee_type}'
-	WHERE id= ${id}`;
+    WHERE id= ${id}`;
+    
+    // var query = `UPDATE public.user_master
+	// SET  name='vimla', email='vimla@nhai.org', mobile=8800123456, designation='PD', department='IT', emp_id='EMP000', emp_type='Contratual'
+    // WHERE id=4`
+    console.log(query);
     debugger
     db.any(query).then((data) => {
         console.log('data aaya',data);
