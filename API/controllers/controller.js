@@ -101,14 +101,14 @@ module.exports.postEditProfile = (req,res) => {
     let emp_id = req.query.emp_id;
     let employee_type = req.query.employee_type;
 
-    var query = `UPDATE public.user_master
-    SET name='${name}', email='${email}' , mobile=${mobile}, designation='${designation}',
-     department='${department}', emp_id='${emp_id}', emp_type='${employee_type}'
-    WHERE id= ${id}`;
-    
     // var query = `UPDATE public.user_master
-	// SET  name='vimla', email='vimla@nhai.org', mobile=8800123456, designation='PD', department='IT', emp_id='EMP000', emp_type='Contratual'
-    // WHERE id=4`
+    // SET name='${name}', email='${email}' , mobile=${mobile}, designation='${designation}',
+    //  department='${department}', emp_id='${emp_id}', emp_type='${employee_type}'
+    // WHERE id= ${id}`;
+    
+    var query = `UPDATE public.user_master
+	SET  name='vimlaa', email='vimlaa@nhai.org', mobile=8800123488, designation='PD', department='IT', emp_id='EMP000', emp_type='Contratual'
+    WHERE id=4`
     console.log(query);
     debugger
     db.any(query).then((data) => {
