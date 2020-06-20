@@ -15,6 +15,8 @@ router.get('/getSingleEmployeesLogs',controller.getSingleEmployeesLogs)
 router.post('/postAddEmployee',controller.postAddEmployee)
 
 router.post('/editProfile',controller.postEditProfile)
+router.post('/addVisitor',controller.addVisitor)
+router.post('/addGuard',controller.addGuard)
 
 
 module.exports = router;

@@ -118,3 +118,55 @@ module.exports.postEditProfile = (req,res) => {
     });
 }
 
+module.exports.addVisitor = (req,res) => {
+
+    
+    let name=req.query.name;
+    let email=req.query.email;
+    let mobile=req.query.mobile;
+    let companyname = req.query.companyname;
+    let timestamp = req.query.timestamp;
+    let purpose = req.query.purpose;
+    let meetingwith = req.query.meetingwith;
+
+    var query = `INSERT INTO public.visitor_master(
+        name, mobile, email, "timestamp", purpose, meetingwith, companyname)
+        VALUES ( '${name}', ${mobile}, '${email}', '${timestamp}', '${purpose}', '${meetingwith}', '${companyname}')`;
+    
+
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        res.send(data);
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send(err);
+    });
+}
+
+module.exports.addGuard = (req,res) => {
+
+    
+    let name=req.query.name;
+    let imei=req.query.imei;
+    let mobile=req.query.mobile;
+    
+
+    var query = `INSERT INTO public.guard_master(
+        name, imei, mobile)
+        VALUES ('${name}', ${imei}, ${mobile});`;
+    
+
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        res.send(data);
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send(err);
+    });
+}
+
+
