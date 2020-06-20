@@ -169,4 +169,79 @@ module.exports.addGuard = (req,res) => {
     });
 }
 
+module.exports.deleteEmployee = (req,res) => {
+
+    
+    let id=req.query.id;
+    
+    var query = `DELETE FROM public.user_master
+	WHERE id =${id}`;
+    
+
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        res.send(data);
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send(err);
+    });
+}
+
+module.exports.deleteGuard = (req,res) => {
+
+    
+    let id=req.query.id;
+    
+    var query = `DELETE FROM public.guard_master
+	WHERE id =${id}`;
+    
+
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        res.send(data);
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send(err);
+    });
+}
+
+module.exports.deleteVisitor = (req,res) => {
+
+    
+    let id=req.query.id;
+    
+    var query = `DELETE FROM public.visitor_master
+	WHERE id =${id}`;
+    
+
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        res.send(data);
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send(err);
+    });
+}
+
+module.exports.deleteAllVisitor = (req,res) => {
+    
+    var query = `DELETE FROM public.visitor_master`;
+    
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        res.send(data);
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send(err);
+    });
+}
+
 

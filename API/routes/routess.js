@@ -18,5 +18,11 @@ router.post('/editProfile',controller.postEditProfile)
 router.post('/addVisitor',controller.addVisitor)
 router.post('/addGuard',controller.addGuard)
 
+router.post('/deleteEmployee',controller.deleteEmployee)
+router.post('/deleteGuard',controller.deleteGuard)
+router.post('/deleteVisitor',controller.deleteVisitor)
+router.post('/deleteAllVisitor',controller.deleteAllVisitor)
+
+
 
 module.exports = router;
