@@ -92,14 +92,14 @@ module.exports.getSingleEmployeesLogs = (req,res) => {
 
 module.exports.postEditProfile = (req,res) => {
 
-    let id = req.body.id;
-    let name=req.body.name;
-    let email=req.body.email;
-    let mobile=req.body.mobile;
-    let designation = req.body.designation;
-    let department = req.body.department;
-    let emp_id = req.body.emp_id;
-    let employee_type = req.body.employee_type;
+    let id = req.query.id;
+    let name=req.query.name;
+    let email=req.query.email;
+    let mobile=req.query.mobile;
+    let designation = req.query.designation;
+    let department = req.query.department;
+    let emp_id = req.query.emp_id;
+    let employee_type = req.query.employee_type;
 
     var query = `UPDATE public.user_master
     SET name='${name}', email='${email}' , mobile=${mobile}, designation='${designation}',
