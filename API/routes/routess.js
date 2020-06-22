@@ -23,6 +23,8 @@ router.post('/deleteGuard',controller.deleteGuard)
 router.post('/deleteVisitor',controller.deleteVisitor)
 router.post('/deleteAllVisitor',controller.deleteAllVisitor)
 
+router.post('/addEmployeeLogs',controller.addEmployeeLogs)
+
 
 
 module.exports = router;
