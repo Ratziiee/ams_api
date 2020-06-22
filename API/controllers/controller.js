@@ -126,13 +126,14 @@ module.exports.addVisitor = (req,res) => {
     let email=req.query.email;
     let mobile=req.query.mobile;
     let companyname = req.query.companyname;
-    let timestamp = req.query.timestamp;
     let purpose = req.query.purpose;
     let meetingwith = req.query.meetingwith;
+    let date = req.query.date;
+    let time = req.query.time;
 
     var query = `INSERT INTO public.visitor_master(
-        name, mobile, email, "timestamp", purpose, meetingwith, companyname)
-        VALUES ( '${name}', ${mobile}, '${email}', '${timestamp}', '${purpose}', '${meetingwith}', '${companyname}')`;
+        name, mobile, email, purpose, meetingwith, companyname, date, "time")
+        VALUES ( '${name}', ${mobile}, '${email}', '${purpose}', '${meetingwith}', '${companyname}' , ${date} , ${time})`;
     
 
     debugger
@@ -271,4 +272,53 @@ module.exports.addEmployeeLogs = (req,res) => {
     });
 }
 
+module.exports.login = (req,res) => {
 
+    let userid = req.query.userid;
+    let password = req.query.password;
+    let type = req.query.type;
+
+    var query = `SELECT * 
+	FROM public.login_master where userid = '${userid}' and password = '${password}' and type = '${type}'`;
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        if(data.length > 0)
+        {
+            res.send({statusCode : 200, message : "Data Successfully Fetched", data:data});
+        }
+        else
+        {
+            res.send({statusCode : 200, message : "No User Found", data:data});
+        }
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send({statusCode : 500, message : err.message});
+    });
+}
+
+module.exports.changePassword = (req,res) => {
+
+    
+    let id=req.query.id;
+    let userid=req.query.userid;
+    let newPassword=req.query.newPassword;
+    
+
+    var query = `UPDATE public.login_master
+	SET  password='${newPassword}'
+	WHERE id = ${id} and userid = ${userid}`;
+    
+
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        res.send({statusCode : 200, message : "Password Successfully Changed", data:data});
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send({statusCode : 500, message : err.message});
+    });
+}

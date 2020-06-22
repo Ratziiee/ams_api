@@ -24,6 +24,8 @@ router.post('/deleteVisitor',controller.deleteVisitor)
 router.post('/deleteAllVisitor',controller.deleteAllVisitor)
 
 router.post('/addEmployeeLogs',controller.addEmployeeLogs)
+router.get('/login',controller.login)
+router.post('/changePassword',controller.changePassword)
 
 
 
