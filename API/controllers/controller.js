@@ -12,10 +12,10 @@ module.exports.test = (req,res) => {
     db.any(query).then((data) => {
         console.log('data aaya',data);
         // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
-        res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
+        res.send({statusCode : 200, message : "Data Successfully Fetched", data:data});
     }).catch((err) => {
         console.log('error aaya',err);
-        res.send(err);
+        res.send({statusCode : 500, message : err.message});
     });
 }
 
@@ -26,10 +26,10 @@ module.exports.getAllEmployees = (req,res) => {
     db.any(query).then((data) => {
         console.log('data aaya',data);
         // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
-        res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
+        res.send({statusCode : 200, message : "Data Successfully Fetched", data:data});
     }).catch((err) => {
         console.log('error aaya',err);
-        res.send(err);
+        res.send({statusCode : 500, message : err.message});
     });
 }
 
@@ -54,7 +54,7 @@ module.exports.postAddEmployee = (req,res) => {
         // res.send(data);
     }).catch((err) => {
         console.log('error aaya',err);
-        res.send(err);
+        res.send({statusCode : 500, message : err.message});
     });
 }
 
@@ -65,10 +65,10 @@ module.exports.getAllEmployeesLogs = (req,res) => {
     db.any(query).then((data) => {
         console.log('data aaya',data);
         // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
-        res.send(data);
+        res.send({statusCode : 200, message : "Data Successfully Fetched", data:data});
     }).catch((err) => {
         console.log('error aaya',err);
-        res.send(err);
+        res.send({statusCode : 500, message : err.message});
     });
 }
 
@@ -83,10 +83,10 @@ module.exports.getSingleEmployeesLogs = (req,res) => {
     db.any(query).then((data) => {
         console.log('data aaya',data);
         // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
-        res.send(data);
+        res.send({statusCode : 200, message : "Data Successfully Fetched", data:data});
     }).catch((err) => {
         console.log('error aaya',err);
-        res.send(err);
+        res.send({statusCode : 500, message : err.message});
     });
 }
 
@@ -112,10 +112,10 @@ module.exports.postEditProfile = (req,res) => {
     db.any(query).then((data) => {
         console.log('data aaya',data);
         // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
-        res.send(data);
+        res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
     }).catch((err) => {
         console.log('error aaya',err);
-        res.send(err);
+        res.send({statusCode : 500, message : err.message});
     });
 }
 
@@ -139,10 +139,10 @@ module.exports.addVisitor = (req,res) => {
     db.any(query).then((data) => {
         console.log('data aaya',data);
         // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
-        res.send(data);
+        res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
     }).catch((err) => {
         console.log('error aaya',err);
-        res.send(err);
+        res.send({statusCode : 500, message : err.message});
     });
 }
 
@@ -163,10 +163,10 @@ module.exports.addGuard = (req,res) => {
     db.any(query).then((data) => {
         console.log('data aaya',data);
         // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
-        res.send(data);
+        res.send(data);res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
     }).catch((err) => {
         console.log('error aaya',err);
-        res.send(err);
+        res.send({statusCode : 500, message : err.message});
     });
 }
 
@@ -183,10 +183,10 @@ module.exports.deleteEmployee = (req,res) => {
     db.any(query).then((data) => {
         console.log('data aaya',data);
         // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
-        res.send(data);
+        res.send({statusCode : 200, message : "Data Successfully Deleted", data:data});
     }).catch((err) => {
         console.log('error aaya',err);
-        res.send(err);
+        res.send({statusCode : 500, message : err.message});
     });
 }
 
@@ -203,10 +203,10 @@ module.exports.deleteGuard = (req,res) => {
     db.any(query).then((data) => {
         console.log('data aaya',data);
         // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
-        res.send(data);
+        res.send({statusCode : 200, message : "Data Successfully Deleted", data:data});
     }).catch((err) => {
         console.log('error aaya',err);
-        res.send(err);
+        res.send({statusCode : 500, message : err.message});
     });
 }
 
@@ -223,10 +223,10 @@ module.exports.deleteVisitor = (req,res) => {
     db.any(query).then((data) => {
         console.log('data aaya',data);
         // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
-        res.send(data);
+        res.send({statusCode : 200, message : "Data Successfully Deleted", data:data});
     }).catch((err) => {
         console.log('error aaya',err);
-        res.send(err);
+        res.send({statusCode : 500, message : err.message});
     });
 }
 
@@ -238,10 +238,10 @@ module.exports.deleteAllVisitor = (req,res) => {
     db.any(query).then((data) => {
         console.log('data aaya',data);
         // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
-        res.send(data);
+        res.send({statusCode : 200, message : "Data Successfully Deleted", data:data});
     }).catch((err) => {
         console.log('error aaya',err);
-        res.send(err);
+        res.send({statusCode : 500, message : err.message});
     });
 }
 
@@ -267,7 +267,7 @@ module.exports.addEmployeeLogs = (req,res) => {
         res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
     }).catch((err) => {
         console.log('error aaya',err);
-        res.send(err);
+        res.send({statusCode : 500, message : err.message});
     });
 }
 
