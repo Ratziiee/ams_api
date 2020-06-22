@@ -249,28 +249,26 @@ module.exports.addEmployeeLogs = (req,res) => {
 
     
     let emp_id=req.query.emp_id;
-    // let status=req.query.status;
-    // let mobile=req.query.mobile;
-    // let username=req.query.username;
+    let status=req.query.status;
+    let mobile=req.query.mobile;
+    let username=req.query.username;
     let timestamp = Date.now();
     
-    
-    res.send({time : timestamp})
 
-    // var query = `INSERT INTO public.attendance_master(
-    //     emp_id, mobile, status, username, "timestamp")
-    //     VALUES (${emp_id}, ${mobile}, ${status}, ${username}, ${timestamp})`;
+    var query = `INSERT INTO public.attendance_master(
+        emp_id, mobile, status, username, "timestamp")
+        VALUES ('${emp_id}', ${mobile}, '${status}', '${username}', ${timestamp})`;
     
 
-    // debugger
-    // db.any(query).then((data) => {
-    //     console.log('data aaya',data);
-    //     // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
-    //     res.send(data);
-    // }).catch((err) => {
-    //     console.log('error aaya',err);
-    //     res.send(err);
-    // });
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send(err);
+    });
 }
 
 
