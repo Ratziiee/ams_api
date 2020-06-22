@@ -12,7 +12,7 @@ module.exports.test = (req,res) => {
     db.any(query).then((data) => {
         console.log('data aaya',data);
         // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
-        res.send(data);
+        res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
     }).catch((err) => {
         console.log('error aaya',err);
         res.send(err);
@@ -26,7 +26,7 @@ module.exports.getAllEmployees = (req,res) => {
     db.any(query).then((data) => {
         console.log('data aaya',data);
         // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
-        res.send(data);
+        res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
     }).catch((err) => {
         console.log('error aaya',err);
         res.send(err);
