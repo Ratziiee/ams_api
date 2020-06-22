@@ -252,10 +252,10 @@ module.exports.addEmployeeLogs = (req,res) => {
     // let status=req.query.status;
     // let mobile=req.query.mobile;
     // let username=req.query.username;
-    let timestamp = '1234'
+    let timestamp = Date.now();
     
     
-    res.send(req.query)
+    res.send(timestamp)
 
     // var query = `INSERT INTO public.attendance_master(
     //     emp_id, mobile, status, username, "timestamp")
