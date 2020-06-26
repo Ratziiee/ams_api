@@ -264,7 +264,8 @@ module.exports.addEmployeeLogs = (req,res) => {
         emp_id, mobile, status, username, "timestamp", designation, emp_type, department)
         VALUES ('${emp_id}', ${mobile}, '${status}', '${username}', ${timestamp}), '${designation}', '${emp_type}', '${department}')`;
     
-
+        console.log(query);
+        
     debugger
     db.any(query).then((data) => {
         console.log('data aaya',data);
