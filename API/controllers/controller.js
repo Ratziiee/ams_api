@@ -322,3 +322,46 @@ module.exports.changePassword = (req,res) => {
         res.send({statusCode : 500, message : err.message});
     });
 }
+
+module.exports.getAllDesignation = (req,res) => {
+    var query = `SELECT distinct(designation)
+	FROM public.user_master`;
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        res.send({statusCode : 200, message : "Data Successfully Fetched", data:data});
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send({statusCode : 500, message : err.message});
+    });
+}
+
+module.exports.getAllDepartment = (req,res) => {
+    var query = `SELECT distinct(department)
+	FROM public.user_master`;
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        res.send({statusCode : 200, message : "Data Successfully Fetched", data:data});
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send({statusCode : 500, message : err.message});
+    });
+}
+
+module.exports.getAllEmployeeType = (req,res) => {
+    var query = `SELECT distinct(emp_type)
+	FROM public.user_master`;
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        res.send({statusCode : 200, message : "Data Successfully Fetched", data:data});
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send({statusCode : 500, message : err.message});
+    });
+}
+

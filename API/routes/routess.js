@@ -27,6 +27,10 @@ router.post('/addEmployeeLogs',controller.addEmployeeLogs)
 router.get('/login',controller.login)
 router.post('/changePassword',controller.changePassword)
 
+router.get('/getAllDesignation',controller.getAllDesignation);
+router.get('/getAllDepartment',controller.getAllDepartment);
+router.get('/getAllEmployeeType',controller.getAllEmployeeType);
+
 
 
 module.exports = router;
