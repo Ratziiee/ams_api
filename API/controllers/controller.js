@@ -262,7 +262,7 @@ module.exports.addEmployeeLogs = (req,res) => {
 
     var query = `INSERT INTO public.attendance_master(
         emp_id, mobile, status, username, "timestamp", designation, emp_type, department)
-        VALUES ('${emp_id}', ${mobile}, '${status}', '${username}', ${timestamp}), '${designation}', '${emp_type}', '${department})`;
+        VALUES ('${emp_id}', ${mobile}, '${status}', '${username}', ${timestamp}), '${designation}', '${emp_type}', '${department}')`;
     
 
     debugger
