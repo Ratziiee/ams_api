@@ -31,6 +31,11 @@ router.get('/getAllDesignation',controller.getAllDesignation);
 router.get('/getAllDepartment',controller.getAllDepartment);
 router.get('/getAllEmployeeType',controller.getAllEmployeeType);
 
+router.get('/getAllGuard',controller.getAllGuard);
+router.post('/updateGuardStatus',controller.updateGuardStatus);
+
+
+
 
 
 module.exports = router;

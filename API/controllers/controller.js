@@ -153,11 +153,12 @@ module.exports.addGuard = (req,res) => {
     let name=req.query.name;
     let imei=req.query.imei;
     let mobile=req.query.mobile;
+    let status = false;
     
 
     var query = `INSERT INTO public.guard_master(
-        name, imei, mobile)
-        VALUES ('${name}', ${imei}, ${mobile});`;
+        name, imei, mobile,status)
+        VALUES ('${name}', ${imei}, ${mobile},${status});`;
     
 
     debugger
@@ -364,4 +365,40 @@ module.exports.getAllEmployeeType = (req,res) => {
         res.send({statusCode : 500, message : err.message});
     });
 }
+
+module.exports.getAllGuard = (req,res) => {
+    var query = `SELECT *
+	FROM public.guard_master`;
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        res.send({statusCode : 200, message : "Data Successfully Fetched", data:data});
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send({statusCode : 500, message : err.message});
+    });
+}
+
+module.exports.updateGuardStatus = (req,res) => {
+
+    let imei = req.query.imei;
+    let status = req.query.status; 
+
+    var query = `UPDATE public.guard_master
+	SET  status=${status}
+	WHERE imei = ${imei}`;
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
+        // res.send(data);
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send({statusCode : 500, message : err.message});
+    });
+}
+
+
 
