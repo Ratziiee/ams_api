@@ -294,7 +294,7 @@ module.exports.login = (req,res) => {
         }
         else
         {
-            res.send({statusCode : 200, message : "No User Found", data:data});
+            res.send({statusCode : 404, message : "No User Found", data:data});
         }
         // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
         
