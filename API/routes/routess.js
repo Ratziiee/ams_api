@@ -34,6 +34,9 @@ router.get('/getAllEmployeeType',controller.getAllEmployeeType);
 router.get('/getAllGuard',controller.getAllGuard);
 router.post('/updateGuardStatus',controller.updateGuardStatus);
 
+router.get('/getSingleEmployeesDetails',controller.getSingleEmployeesDetails);
+router.post('/updatePassword',controller.updatePassword);
+
 
 
 
