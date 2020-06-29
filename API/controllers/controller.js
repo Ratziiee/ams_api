@@ -443,3 +443,20 @@ module.exports.updatePassword = (req,res) => {
     });
 }
 
+
+module.exports.getQrCodeDetails = (req,res) => {
+
+    let EMAIL = req.query.userid;
+
+    var query = `SELECT *
+	FROM public.qr_code_master where username = '${EMAIL}'`;
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        res.send({statusCode : 200, message : "Data Successfully Fetched", data:data});
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send({statusCode : 500, message : err.message});
+    });
+}

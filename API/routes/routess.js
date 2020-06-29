@@ -37,6 +37,8 @@ router.post('/updateGuardStatus',controller.updateGuardStatus);
 router.get('/getSingleEmployeesDetails',controller.getSingleEmployeesDetails);
 router.post('/updatePassword',controller.updatePassword);
 
+router.get('/getQrCodeDetails',controller.getQrCodeDetails);
+
 
 
 
