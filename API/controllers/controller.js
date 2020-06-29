@@ -467,8 +467,10 @@ module.exports.getSingleEmployeesLogsByEmail = (req,res) => {
     
 
     var query = `SELECT *
-	FROM public.attendance_master where userid = ${userid}`;
+	FROM public.attendance_master WHERE EMAIL = '${userid}';`;
     debugger
+
+    console.log(query)
     db.any(query).then((data) => {
         // console.log('data aaya',data);
         // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
