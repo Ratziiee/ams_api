@@ -461,27 +461,18 @@ module.exports.getQrCodeDetails = (req,res) => {
     });
 }
 
-module.exports.getSingleEmployeesLogsCurrentDay = (req,res) => {
+module.exports.getSingleEmployeesLogsByEmail = (req,res) => {
 
-    let emp_id = req.query.emp_id;
-    let mobile = req.query.mobile;
+    let userid = req.query.userid;
+    
 
     var query = `SELECT *
-	FROM public.attendance_master where emp_id = '${emp_id}' and mobile = ${mobile}`;
+	FROM public.attendance_master where userid = ${userid}`;
     debugger
     db.any(query).then((data) => {
-        console.log('data aaya',data);
-        let currentDate = formatDate(new Date());
-        let arrTime = [];
-        data.map((item) => {
-            if(currentDate === formatDate(item.timestamp))
-            {
-                arrTime.push({details : item})
-            }
-        })
-
+        // console.log('data aaya',data);
         // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
-        res.send({statusCode : 200, message : "Data Successfully Fetched", data:arrTime});
+        res.send({statusCode : 200, message : "Data Successfully Fetched", data:data});
     }).catch((err) => {
         console.log('error aaya',err);
         res.send({statusCode : 500, message : err.message});
@@ -489,15 +480,16 @@ module.exports.getSingleEmployeesLogsCurrentDay = (req,res) => {
 }
 
 function formatDate(date) {
+    console.log("format date :",date);
     var d = new Date(date),
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear();
-
+// console.log("day",day)
     if (month.length < 2) 
         month = '0' + month;
     if (day.length < 2) 
         day = '0' + day;
-
+        console.log([day, month, year].join('-'))
     return [day, month, year].join('-');
 }
