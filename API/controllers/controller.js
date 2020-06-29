@@ -460,3 +460,44 @@ module.exports.getQrCodeDetails = (req,res) => {
         res.send({statusCode : 500, message : err.message});
     });
 }
+
+module.exports.getSingleEmployeesLogsCurrentDay = (req,res) => {
+
+    let emp_id = req.query.emp_id;
+    let mobile = req.query.mobile;
+
+    var query = `SELECT *
+	FROM public.attendance_master where emp_id = '${emp_id}' and mobile = ${mobile}`;
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        let currentDate = formatDate(new Date());
+        let arrTime = [];
+        data.map((item) => {
+            if(currentDate === formatDate(item.timestamp))
+            {
+                arrTime.push({details : item})
+            }
+        })
+
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        res.send({statusCode : 200, message : "Data Successfully Fetched", data:arrTime});
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send({statusCode : 500, message : err.message});
+    });
+}
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [day, month, year].join('-');
+}
