@@ -40,6 +40,8 @@ router.post('/updatePassword',controller.updatePassword);
 router.get('/getQrCodeDetails',controller.getQrCodeDetails);
 router.get('/getSingleEmployeesLogsByEmail',controller.getSingleEmployeesLogsByEmail)
 
+router.post('/addToLoginMaster',controller.addToLoginMaster);
+
 
 
 
