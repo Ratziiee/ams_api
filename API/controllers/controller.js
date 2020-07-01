@@ -133,7 +133,7 @@ module.exports.addVisitor = (req,res) => {
 
     var query = `INSERT INTO public.visitor_master(
         name, mobile, email, purpose, meetingwith, companyname, date, "time")
-        VALUES ( '${name}', ${mobile}, '${email}', '${purpose}', '${meetingwith}', '${companyname}' , ${date} , ${time})`;
+        VALUES ( '${name}', ${mobile}, '${email}', '${purpose}', '${meetingwith}', '${companyname}' , '${date}' , '${time}')`;
     
 
     debugger
