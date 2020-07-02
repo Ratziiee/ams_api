@@ -589,3 +589,43 @@ function formatDate(date) {
         console.log([day, month, year].join('/'))
     return [day, month, year].join('/');
 }
+
+module.exports.deleteEmployeeFromLogin = (req,res) => {
+
+    
+    let userid=req.query.userid;
+    
+    var query = `DELETE FROM public.login_master
+	WHERE userid ='${userid}'`;
+    
+
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        res.send({statusCode : 200, message : "Data Successfully Deleted", data:data});
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send({statusCode : 500, message : err.message});
+    });
+}
+
+module.exports.deleteEmployeeFromQR = (req,res) => {
+
+    
+    let username=req.query.username;
+    
+    var query = `DELETE FROM public.qr_code_master
+	WHERE username ='${username}'`;
+    
+
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        res.send({statusCode : 200, message : "Data Successfully Deleted", data:data});
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send({statusCode : 500, message : err.message});
+    });
+}
