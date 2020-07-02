@@ -527,11 +527,12 @@ module.exports.postQrCodeData = (req,res) => {
     let EMP_TYPE = req.query.emp_type;
     let DEPARTMENT = req.query.department;
     let EMP_NAME = req.query.emp_name;
+    let DATE = formatDate(new Date());
 
 
     var query = `INSERT INTO public.qr_code_master(
-         username, mobile, emp_id, designation, emp_type, department, emp_name)
-        VALUES ( '${USERNAME}', ${MOBILE} , '${EMP_ID}', '${DESIGNATION}', '${EMP_TYPE}', '${DEPARTMENT}', '${EMP_NAME}')`;
+         username, mobile,valid_upto ,emp_id, designation, emp_type, department, emp_name)
+        VALUES ( '${USERNAME}', ${MOBILE} ,'${DATE}' ,'${EMP_ID}', '${DESIGNATION}', '${EMP_TYPE}', '${DEPARTMENT}', '${EMP_NAME}')`;
     
     debugger
     
@@ -546,9 +547,43 @@ module.exports.postQrCodeData = (req,res) => {
     });
 }
 
-cron.schedule('0 0 * * *', () => {
+cron.schedule('0 1 * * *', () => {
+
+    let date = formatDate(new Date());
+    
+    var query = `UPDATE public.qr_code_master
+	SET valid_upto='${date}'`;
+   
+   debugger
+   
+   db.any(query).then((data) => {
+       console.log('data aaya',data);
+       // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+       res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
+       // res.send(data);
+   }).catch((err) => {
+       console.log('error aaya',err);
+       res.send({statusCode : 500, message : err.message});
+   });
     
 }, {
     scheduled: true,
     timezone: "Asia/Kolkata",
 });
+
+
+
+function formatDate(date) {
+    console.log("format date :",date);
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+// console.log("day",day)
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+        console.log([day, month, year].join('/'))
+    return [day, month, year].join('/');
+}
