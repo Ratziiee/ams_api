@@ -42,6 +42,8 @@ router.get('/getSingleEmployeesLogsByEmail',controller.getSingleEmployeesLogsByE
 
 router.post('/addToLoginMaster',controller.addToLoginMaster);
 
+router.post('/postQrCodeData',controller.postQrCodeData);
+
 
 
 

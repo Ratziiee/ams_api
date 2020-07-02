@@ -1,5 +1,6 @@
 const { db, pg, pool} = require('../../config/dbConfig');
 const msgs = require('../../config/constants');
+var cron = require('node-cron');
 
 
 
@@ -516,3 +517,38 @@ module.exports.addToLoginMaster = (req,res) => {
         res.send({statusCode : 500, message : err.message});
     });
 }
+
+module.exports.postQrCodeData = (req,res) => {
+
+    let USERNAME = req.query.email;
+    let MOBILE = req.query.mobile; 
+    let EMP_ID = req.query.emp_id;
+    let DESIGNATION = req.query.designation;
+    let EMP_TYPE = req.query.emp_type;
+    let DEPARTMENT = req.query.department;
+    let EMP_NAME = req.query.emp_name;
+
+
+    var query = `INSERT INTO public.qr_code_master(
+         username, mobile, emp_id, designation, emp_type, department, emp_name)
+        VALUES ( '${USERNAME}', ${MOBILE} , '${EMP_ID}', '${DESIGNATION}', '${EMP_TYPE}', '${DEPARTMENT}', '${EMP_NAME}')`;
+    
+    debugger
+    
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
+        // res.send(data);
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send({statusCode : 500, message : err.message});
+    });
+}
+
+cron.schedule('0 0 * * *', () => {
+    
+}, {
+    scheduled: true,
+    timezone: "Asia/Kolkata",
+});
