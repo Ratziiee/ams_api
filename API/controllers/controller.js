@@ -260,11 +260,12 @@ module.exports.addEmployeeLogs = (req,res) => {
     let emp_type = req.query.emp_type;
     let department = req.query.department;
     let email = req.query.email;
+    let valid_upto = req.query.valid_upto;
     
 
     var query = `INSERT INTO public.attendance_master(
-        emp_id, mobile, status, username, "timestamp", designation, emp_type, department,email)
-        VALUES ('${emp_id}', ${mobile}, '${status}', '${username}','${timestamp}' , '${designation}', '${emp_type}', '${department}', '${email}')`;
+        emp_id, mobile, status, username, "timestamp", designation, emp_type, department,email,valid_upto)
+        VALUES ('${emp_id}', ${mobile}, '${status}', '${username}','${timestamp}' , '${designation}', '${emp_type}', '${department}', '${email}','${valid_upto}')`;
     
         console.log(query);
 
