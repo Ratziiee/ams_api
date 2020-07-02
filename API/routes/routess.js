@@ -47,6 +47,8 @@ router.post('/postQrCodeData',controller.postQrCodeData);
 router.post('/deleteEmployeeFromLogin',controller.deleteEmployeeFromLogin)
 router.post('/deleteEmployeeFromQR',controller.deleteEmployeeFromQR)
 
+router.post('/deleteEmployeeFromUserlogs',controller.deleteEmployeeFromUserlogs)
+router.post('/deleteGuardFromLogin',controller.deleteGuardFromLogin)
 
 
 

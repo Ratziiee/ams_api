@@ -155,11 +155,12 @@ module.exports.addGuard = (req,res) => {
     let imei=req.query.imei;
     let mobile=req.query.mobile;
     let status = false;
+    let email = req.query.email;
     
 
     var query = `INSERT INTO public.guard_master(
-        name, imei, mobile,status)
-        VALUES ('${name}', ${imei}, ${mobile},${status});`;
+        name, imei, mobile,status,email)
+        VALUES ('${name}', ${imei}, ${mobile},${status},'${email}');`;
     
 
     debugger
@@ -617,6 +618,46 @@ module.exports.deleteEmployeeFromQR = (req,res) => {
     
     var query = `DELETE FROM public.qr_code_master
 	WHERE username ='${username}'`;
+    
+
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        res.send({statusCode : 200, message : "Data Successfully Deleted", data:data});
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send({statusCode : 500, message : err.message});
+    });
+}
+
+module.exports.deleteEmployeeFromUserlogs = (req,res) => {
+
+    
+    let email=req.query.email;
+    
+    var query = `DELETE FROM public.attendance_master
+	WHERE email ='${email}'`;
+    
+
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        res.send({statusCode : 200, message : "Data Successfully Deleted", data:data});
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send({statusCode : 500, message : err.message});
+    });
+}
+
+module.exports.deleteGuardFromLogin = (req,res) => {
+
+    
+    let userid=req.query.userid;
+    
+    var query = `DELETE FROM public.login_master
+	WHERE userid ='${userid}'`;
     
 
     debugger
