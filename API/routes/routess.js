@@ -50,6 +50,8 @@ router.post('/deleteEmployeeFromQR',controller.deleteEmployeeFromQR)
 router.post('/deleteEmployeeFromUserlogs',controller.deleteEmployeeFromUserlogs)
 router.post('/deleteGuardFromLogin',controller.deleteGuardFromLogin)
 
+router.get('/getSingleGuard',controller.getSingleGuard);
+
 
 
 
