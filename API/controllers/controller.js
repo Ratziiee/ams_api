@@ -701,3 +701,48 @@ module.exports.getAllVisitor = (req,res) => {
         res.send({statusCode : 500, message : err.message});
     });
 }
+
+function updateDateForQR() {
+    let date = formatDate(new Date());
+    
+    var query = `UPDATE public.qr_code_master
+	SET valid_upto='${date}'`;
+   
+   debugger
+   
+   db.any(query).then((data) => {
+       console.log('data aaya',data);
+       // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+       res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
+       // res.send(data);
+   }).catch((err) => {
+       console.log('error aaya',err);
+       res.send({statusCode : 500, message : err.message});
+   });
+}
+
+module.exports.getForgotPasswordDetails = (req,res) => {
+
+    let email = req.query.email;
+    
+
+    var query = `SELECT * 
+	FROM public.login_master where userid = '${email}'`;
+    debugger
+    db.any(query).then((data) => {
+        console.log('data aaya',data);
+        if(data.length > 0)
+        {
+            res.send({statusCode : 200, message : "Data Successfully Fetched", data:data});
+        }
+        else
+        {
+            res.send({statusCode : 404, message : "No User Found", data:data});
+        }
+        // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+        
+    }).catch((err) => {
+        console.log('error aaya',err);
+        res.send({statusCode : 500, message : err.message});
+    });
+}
