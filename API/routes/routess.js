@@ -53,7 +53,7 @@ router.post('/deleteGuardFromLogin',controller.deleteGuardFromLogin)
 router.get('/getSingleGuard',controller.getSingleGuard);
 router.get('/getAllVisitor',controller.getAllVisitor);
 
-router.get('/updateDateForQR',controller.updateDateForQR);
+// router.get('/updateDateForQR',controller.updateDateForQR);
 
 router.get('/getForgotPasswordDetails',controller.getForgotPasswordDetails)
 
