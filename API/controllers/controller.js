@@ -261,7 +261,7 @@ module.exports.addEmployeeLogs = (req,res) => {
     let emp_type = req.query.emp_type;
     let department = req.query.department;
     let email = req.query.email;
-    let valid_upto = req.query.valid_upto;
+    
     
 
     var query = `INSERT INTO public.attendance_master(
@@ -476,8 +476,11 @@ module.exports.getSingleEmployeesLogsByEmail = (req,res) => {
 
     console.log(query)
     db.any(query).then((data) => {
-        // console.log('data aaya',data);
+        console.log('data logs aaya',formatDate(parseInt(data[0].timestamp)));
+        
+        
         // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
+
         res.send({statusCode : 200, message : "Data Successfully Fetched", data:data});
     }).catch((err) => {
         console.log('error aaya',err);
@@ -550,26 +553,7 @@ module.exports.postQrCodeData = (req,res) => {
     });
 }
 
-cron.schedule('0 1 * * *', () => {
-
-    let date = formatDate(new Date());
-    
-    var query = `UPDATE public.qr_code_master
-	SET valid_upto='${date}'`;
-   
-   debugger
-   
-   db.any(query).then((data) => {
-       console.log('data aaya',data);
-       // utils.sendMail(req,res,"AeroGMS","ratzupadhyay@gmail.com","Welcome to AeroGMS",response_msgs.signup_mail,"");
-       res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
-       // res.send(data);
-   }).catch((err) => {
-       console.log('error aaya',err);
-       res.send({statusCode : 500, message : err.message});
-   });
-    
-}, {
+cron.schedule('0 1 * * *', updateDateForQR(), {
     scheduled: true,
     timezone: "Asia/Kolkata",
 });
